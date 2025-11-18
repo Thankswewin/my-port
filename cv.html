@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philemon Ofotan - AI Developer CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cv-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #10b981;
+        }
+
+        .header-info h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .header-info .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #10b981;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .skill-category h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 4px;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: "▪";
+            color: #10b981;
+            position: absolute;
+            left: 0;
+        }
+
+        .project {
+            background: #f9fafb;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid #10b981;
+        }
+
+        .project h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .project .tech {
+            font-size: 13px;
+            color: #10b981;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .project .description {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        .project .highlights {
+            margin-top: 8px;
+        }
+
+        .project .highlights li {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 4px;
+            list-style-position: inside;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            text-align: center;
+        }
+
+        .achievement {
+            padding: 16px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .achievement .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 4px;
+        }
+
+        .achievement .label {
+            font-size: 12px;
+            color: #065f46;
+            font-weight: 500;
+        }
+
+        .download-btn {
+            display: block;
+            width: 200px;
+            margin: 32px auto;
+            padding: 12px 24px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .download-btn {
+                display: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CV Header -->
+    <div class="cv-header">
+        <img src="https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/2320914b-5b4d-4e92-aeea-0a237bac96e4/838657680d21d437d86249b1455749fd.jpg?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1763493183&Signature=IzdsFEC5/5sZLMSIl7VhFvsqSKs=" alt="Philemon Ofotan" class="profile-img">
+        <div class="header-info">
+            <h1>Philemon Ofotan</h1>
+            <div class="title">AI Developer & Automation Specialist</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>pheelymon@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>Nigeria</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span>Available for AI roles & projects</span>
+                </div>
+                <div class="contact-item">
+                    <span>🔗</span>
+                    <span>linkedin.com/in/philemon-ofotan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="section">
+        <h2 class="section-title">About</h2>
+        <p style="font-size: 15px; color: #374151; line-height: 1.6;">
+            AI Developer based in Nigeria specializing in building intelligent tools, automations, and AI-powered products.
+            Expert in transforming complex requirements into practical AI solutions with clean interfaces.
+            Skilled in LLM integration, prompt engineering, and creating systems that solve real business problems.
+            Collaborative team player with strong documentation skills and focus on delivering value-driven products.
+        </p>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>JavaScript / TypeScript</li>
+                    <li>SQL</li>
+                    <li>HTML/CSS</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>AI & Machine Learning</h4>
+                <ul class="skill-list">
+                    <li>Large Language Models (LLMs)</li>
+                    <li>Prompt Engineering</li>
+                    <li>Retrieval-Augmented Generation (RAG)</li>
+                    <li>Vector Databases (Pinecone)</li>
+                    <li>OpenAI / Gemini APIs</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Back-end Development</h4>
+                <ul class="skill-list">
+                    <li>Node.js / Express</li>
+                    <li>FastAPI (Python)</li>
+                    <li>REST APIs</li>
+                    <li>PostgreSQL</li>
+                    <li>Supabase</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Front-end Development</h4>
+                <ul class="skill-list">
+                    <li>React / Next.js</li>
+                    <li>Tailwind CSS</li>
+                    <li>Responsive Design</li>
+                    <li>User Interface Design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Projects -->
+    <div class="section">
+        <h2 class="section-title">Featured AI Projects</h2>
+
+        <div class="project">
+            <h4>AI Email Assistant</h4>
+            <div class="tech">JavaScript, Browser APIs, LLM Prompt Engineering</div>
+            <div class="description">
+                Intelligent email generator that transforms rough notes into professional emails with customizable tone and formatting.
+            </div>
+            <div class="highlights">
+                <li>• On-page demo with real-time generation</li>
+                <li>• Multiple tone options (Professional, Friendly, Direct)</li>
+                <li>• Context-aware email composition</li>
+            </div>
+        </div>
+
+        <div class="project">
+            <h4>Naija SME Copy Assistant</h4>
+            <div class="tech">JavaScript, Localized AI, Marketing Prompts</div>
+            <div class="description">
+                Nigerian business-focused AI tool that generates localized social media captions for small businesses across different platforms.
+            </div>
+            <div class="highlights">
+                <li>• Platform-specific content optimization</li>
+                <li>• Nigerian market localization</li>
+                <li>• Multi-caption generation for variety</li>
+            </div>
+        </div>
+
+        <div class="project">
+            <h4>Interview Prep Assistant</h4>
+            <div class="tech">JavaScript, Dynamic Question Generation</div>
+            <div class="description">
+                Technical and behavioral interview question generator that creates role-specific practice questions based on job titles and focus areas.
+            </div>
+            <div class="highlights">
+                <li>• Technical, behavioral, and system design questions</li>
+                <li>• Role-customized content generation</li>
+                <li>• Immediate practice availability</li>
+            </div>
+        </div>
+
+        <div class="project">
+            <h4>Meeting Notes Summarizer</h4>
+            <div class="tech">JavaScript, Text Processing, Pattern Recognition</div>
+            <div class="description">
+                Intelligent meeting notes processor that automatically categorizes raw notes into decisions, action items, and key highlights.
+            </div>
+            <div class="highlights">
+                <li>• Automatic decision detection</li>
+                <li>• Action item assignment tracking</li>
+                <li>• Structured summary generation</li>
+            </div>
+        </div>
+
+        <div class="project">
+            <h4>Internal Knowledge Q&A Bot</h4>
+            <div class="tech">Vector Search, RAG, Document Processing</div>
+            <div class="description">
+                Enterprise knowledge assistant that answers employee questions from company documents with citation highlighting for trust and accuracy.
+            </div>
+            <div class="highlights">
+                <li>• Document indexing and retrieval</li>
+                <li>• Citation-based answers</li>
+                <li>• Role-based access control</li>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional AI Tools -->
+    <div class="section">
+        <h2 class="section-title">AI Tools & Experiments</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Content & Marketing</h4>
+                <ul class="skill-list">
+                    <li>Document Summarizer</li>
+                    <li>Content Repurposer</li>
+                    <li>Naija Resume Optimizer</li>
+                    <li>Customer Support Drafts</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Developer Tools</h4>
+                <ul class="skill-list">
+                    <li>Code Review Helper</li>
+                    <li>CSV Insight Explorer</li>
+                    <li>WhatsApp FAQ Bot</li>
+                    <li>Task Automation Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Achievements -->
+    <div class="section">
+        <h2 class="section-title">Key Achievements</h2>
+        <div class="achievements">
+            <div class="achievement">
+                <div class="number">15+</div>
+                <div class="label">AI Projects Built</div>
+            </div>
+            <div class="achievement">
+                <div class="number">5+</div>
+                <div class="label">Countries Served</div>
+            </div>
+            <div class="achievement">
+                <div class="number">10+</div>
+                <div class="label">AI Tools Created</div>
+            </div>
+            <div class="achievement">
+                <div class="number">100%</div>
+                <div class="label">Remote Work Ready</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Focus -->
+    <div class="section">
+        <h2 class="section-title">Professional Focus</h2>
+        <div style="font-size: 15px; color: #374151; line-height: 1.6;">
+            <p><strong>Core Expertise:</strong> AI assistants, automation, internal tools, content generation, and Q&A systems</p>
+            <p style="margin-top: 12px;"><strong>Current Status:</strong> Open to full-time roles, remote contracts, and collaborative AI projects</p>
+            <p style="margin-top: 12px;"><strong>Approach:</strong> Transform complex business requirements into intuitive AI solutions with measurable impact</p>
+        </div>
+    </div>
+
+    <!-- Download Button -->
+    <a href="#" class="download-btn" onclick="window.print(); return false;">📄 Download as PDF</a>
+
+    <script>
+        // Print functionality for CV download
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('CV loaded successfully');
+        });
+    </script>
+</body>
+</html>
