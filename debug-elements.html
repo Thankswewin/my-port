@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Elements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #000; color: white; padding: 20px; font-family: Arial; }
+        button { background: #22c55e; color: black; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; margin: 10px; }
+        textarea { background: #111; color: white; border: 1px solid #333; padding: 10px; border-radius: 10px; width: 300px; }
+        .output { background: #111; padding: 10px; border-radius: 10px; margin-top: 10px; min-height: 50px; border: 1px solid #333; }
+    </style>
+</head>
+<body>
+    <h1>Debug Element Connection</h1>
+    <p>Testing exact HTML structure from portfolio page</p>
+
+    <!-- Exact HTML structure from portfolio page -->
+    <div>
+        <label for="emailInput" class="block text-xs text-gray-300 mb-1 font-medium">Your rough notes</label>
+        <textarea id="emailInput" rows="4" class="w-full text-sm bg-black/60 border border-white/20 rounded-2xl px-3 py-2" placeholder="Test notes here..."></textarea>
+    </div>
+
+    <button id="emailGenerateBtn" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-emerald-400 text-black text-xs font-semibold px-4 py-2 mt-1 hover:bg-emerald-300 transition">
+        Generate email (on‑page)
+    </button>
+
+    <div>
+        <label class="block text-xs text-gray-300 mb-1 font-medium">Suggested email</label>
+        <div id="emailOutput" class="min-h-[5rem] text-sm bg-black/40 border border-white/10 rounded-2xl px-3 py-2 text-gray-200 overflow-y-auto"></div>
+    </div>
+
+    <script>
+        console.log('=== DEBUG ELEMENTS TEST ===');
+
+        // Test 1: Immediate execution (problematic)
+        console.log('--- Testing immediate execution ---');
+        const emailBtn1 = document.getElementById('emailGenerateBtn');
+        const emailInput1 = document.getElementById('emailInput');
+        const emailOutput1 = document.getElementById('emailOutput');
+
+        console.log('Immediate - Elements found:', {
+            btn: !!emailBtn1,
+            input: !!emailInput1,
+            output: !!emailOutput1
+        });
+
+        // Test 2: DOM Content Loaded (correct)
+        console.log('--- Testing DOM Content Loaded ---');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded fired!');
+
+            const emailBtn2 = document.getElementById('emailGenerateBtn');
+            const emailInput2 = document.getElementById('emailInput');
+            const emailOutput2 = document.getElementById('emailOutput');
+
+            console.log('After DOM loaded - Elements found:', {
+                btn: !!emailBtn2,
+                input: !!emailInput2,
+                output: !!emailOutput2
+            });
+
+            if (emailBtn2 && emailInput2 && emailOutput2) {
+                console.log('All elements found, adding event listener...');
+
+                emailBtn2.addEventListener('click', function() {
+                    console.log('BUTTON CLICKED! Element connection working!');
+                    const value = emailInput2.value || 'empty';
+                    emailOutput2.textContent = 'SUCCESS! Button connected. Input was: ' + value;
+                    alert('Button connection test SUCCESS! Check output box.');
+                });
+
+                console.log('Event listener added successfully');
+            } else {
+                console.error('Could not find elements after DOM load');
+            }
+        });
+
+        // Test 3: Window load (alternative)
+        console.log('--- Testing Window Load ---');
+        window.addEventListener('load', function() {
+            console.log('Window load fired!');
+
+            const emailBtn3 = document.getElementById('emailGenerateBtn');
+            console.log('After window load - Button found:', !!emailBtn3);
+        });
+
+        console.log('=== DEBUG ELEMENTS TEST SETUP COMPLETE ===');
+    </script>
+</body>
+</html>

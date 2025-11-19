@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Drafts - AI Response Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="text-6xl">💬</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-2 text-blue-400">Customer Support Drafts</h1>
+            <p class="text-gray-300">Generate professional, empathetic customer support responses</p>
+        </header>
+
+        <main class="bg-gray-800 bg-opacity-90 rounded-lg p-6 backdrop-blur-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="customerMessage" class="block text-sm font-medium mb-2">Customer Message</label>
+                    <textarea
+                        id="customerMessage"
+                        rows="8"
+                        class="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none"
+                        placeholder="Paste the customer's message here..."
+                    ></textarea>
+                    <div class="mt-2 flex justify-between text-xs text-gray-400">
+                        <span id="messageLength">0 characters</span>
+                        <span id="messageSentiment">Neutral</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="responseTone" class="block text-sm font-medium mb-2">Response Tone</label>
+                            <select id="responseTone" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                                <option value="professional">Professional</option>
+                                <option value="empathetic">Empathetic</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="apologetic">Apologetic</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="issueType" class="block text-sm font-medium mb-2">Issue Type</label>
+                            <select id="issueType" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Issue</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="bug">Bug Report</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Response Options</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="includeSolution" class="mr-2 rounded text-blue-500" checked>
+                                    <span class="text-sm">Include solution suggestions</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="includeTimeline" class="mr-2 rounded text-blue-500">
+                                    <span class="text-sm">Include timeline</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="includeNextSteps" class="mr-2 rounded text-blue-500" checked>
+                                    <span class="text-sm">Include next steps</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="companyName" class="block text-sm font-medium mb-2">Company Name</label>
+                            <input
+                                type="text"
+                                id="companyName"
+                                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                                placeholder="Your company name"
+                                value="Your Company"
+                            >
+                        </div>
+
+                        <button id="generateBtn" class="w-full bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-200">
+                            <span class="flex items-center justify-center gap-2">
+                                <span>✨</span>
+                                Generate Response
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultSection" class="hidden space-y-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-blue-300">Generated Response</h3>
+                    <div class="flex gap-2">
+                        <button id="copyBtn" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition duration-200">
+                            Copy Response
+                        </button>
+                        <button id="regenerateBtn" class="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600 transition duration-200">
+                            Regenerate
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-6 border-l-4 border-blue-500">
+                    <div id="responseContent" class="text-gray-200 leading-relaxed">
+                        <!-- Generated response will appear here -->
+                    </div>
+                </div>
+
+                <!-- Response Variations -->
+                <div class="bg-gray-700 bg-opacity-30 rounded-lg p-4">
+                    <h4 class="text-sm font-medium text-blue-300 mb-3">Alternative Responses</h4>
+                    <div id="alternativeResponses" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Alternative responses will appear here -->
+                    </div>
+                </div>
+
+                <!-- Response Analysis -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <div id="toneScore" class="text-2xl font-bold text-green-300">A+</div>
+                        <div class="text-xs text-gray-400">Tone Score</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="empathyScore" class="text-2xl font-bold text-blue-300">85%</div>
+                        <div class="text-xs text-gray-400">Empathy</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="clarityScore" class="text-2xl font-bold text-purple-300">92%</div>
+                        <div class="text-xs text-gray-400">Clarity</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="professionalScore" class="text-2xl font-bold text-orange-300">90%</div>
+                        <div class="text-xs text-gray-400">Professionalism</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-400">
+            <p>Deliver exceptional customer support with AI-generated responses 🎯</p>
+            <p class="mt-2 text-sm">Created by <a href="https://github.com/Thankswewin" class="text-blue-400 hover:text-blue-300">Philemon Ofotan</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Review Helper - AI-Powered Code Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-900 to-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="text-6xl">🔍</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-2 text-indigo-400">Code Review Helper</h1>
+            <p class="text-gray-300">AI-powered code analysis to improve quality and catch issues</p>
+        </header>
+
+        <main class="bg-gray-800 bg-opacity-90 rounded-lg p-6 backdrop-blur-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="codeInput" class="block text-sm font-medium mb-2">Paste Your Code</label>
+                    <textarea
+                        id="codeInput"
+                        rows="12"
+                        class="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 font-mono text-sm focus:ring-2 focus:ring-indigo-400 focus:border-transparent resize-none"
+                        placeholder="Paste your code here for analysis..."
+                    ></textarea>
+                    <div class="mt-2 flex justify-between text-xs text-gray-400">
+                        <span id="codeLang">Language: Auto-detect</span>
+                        <span id="lineCount">0 lines</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-4">
+                        <label for="focusArea" class="block text-sm font-medium mb-2">Review Focus</label>
+                        <select id="focusArea" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-transparent">
+                            <option value="general">General Review</option>
+                            <option value="security">Security Issues</option>
+                            <option value="performance">Performance</option>
+                            <option value="readability">Code Readability</option>
+                            <option value="best-practices">Best Practices</option>
+                            <option value="bugs">Potential Bugs</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2">Analysis Options</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="checkStyle" class="mr-2 rounded text-indigo-500" checked>
+                                <span class="text-sm">Code Style & Formatting</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="checkSecurity" class="mr-2 rounded text-indigo-500" checked>
+                                <span class="text-sm">Security Vulnerabilities</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="checkPerformance" class="mr-2 rounded text-indigo-500">
+                                <span class="text-sm">Performance Issues</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="checkDocstring" class="mr-2 rounded text-indigo-500">
+                                <span class="text-sm">Missing Documentation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button id="analyzeBtn" class="flex-1 bg-indigo-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-indigo-600 transition duration-200">
+                            <span class="flex items-center justify-center gap-2">
+                                <span>🚀</span>
+                                Analyze Code
+                            </span>
+                        </button>
+                        <button id="clearCodeBtn" class="bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition duration-200">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultSection" class="hidden space-y-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-indigo-300">Code Review Results</h3>
+                    <div class="flex gap-2">
+                        <button id="copyReportBtn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition duration-200">
+                            Copy Report
+                        </button>
+                        <button id="exportBtn" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition duration-200">
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary Statistics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="summary-card bg-red-900 bg-opacity-30 border border-red-500 border-opacity-30 rounded-lg p-4 text-center">
+                        <div id="criticalIssues" class="text-2xl font-bold text-red-300">0</div>
+                        <div class="text-xs text-gray-400">Critical Issues</div>
+                    </div>
+                    <div class="summary-card bg-yellow-900 bg-opacity-30 border border-yellow-500 border-opacity-30 rounded-lg p-4 text-center">
+                        <div id="warnings" class="text-2xl font-bold text-yellow-300">0</div>
+                        <div class="text-xs text-gray-400">Warnings</div>
+                    </div>
+                    <div class="summary-card bg-blue-900 bg-opacity-30 border border-blue-500 border-opacity-30 rounded-lg p-4 text-center">
+                        <div id="suggestions" class="text-2xl font-bold text-blue-300">0</div>
+                        <div class="text-xs text-gray-400">Suggestions</div>
+                    </div>
+                    <div class="summary-card bg-green-900 bg-opacity-30 border border-green-500 border-opacity-30 rounded-lg p-4 text-center">
+                        <div id="score" class="text-2xl font-bold text-green-300">A+</div>
+                        <div class="text-xs text-gray-400">Code Quality</div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="analysis-section">
+                        <h4 class="font-medium text-red-300 mb-3 flex items-center gap-2">
+                            <span>🚨</span> Critical Issues
+                        </h4>
+                        <div id="criticalList" class="space-y-2">
+                            <p class="text-gray-400 italic">No critical issues found</p>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4 class="font-medium text-yellow-300 mb-3 flex items-center gap-2">
+                            <span>⚠️</span> Warnings
+                        </h4>
+                        <div id="warningList" class="space-y-2">
+                            <p class="text-gray-400 italic">No warnings found</p>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4 class="font-medium text-blue-300 mb-3 flex items-center gap-2">
+                            <span>💡</span> Suggestions
+                        </h4>
+                        <div id="suggestionList" class="space-y-2">
+                            <p class="text-gray-400 italic">No suggestions available</p>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4 class="font-medium text-green-300 mb-3 flex items-center gap-2">
+                            <span>✅</span> Positive Points
+                        </h4>
+                        <div id="positiveList" class="space-y-2">
+                            <p class="text-gray-400 italic">No positive points identified</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Examples -->
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-4">
+                    <h4 class="font-medium text-indigo-300 mb-3">📝 Improved Code Examples</h4>
+                    <div id="codeExamples" class="space-y-4">
+                        <p class="text-gray-400 italic">No code improvements suggested</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-400">
+            <p>Improve your code quality with AI-powered reviews 🚀</p>
+            <p class="mt-2 text-sm">Created by <a href="https://github.com/Thankswewin" class="text-indigo-400 hover:text-indigo-300">Philemon Ofotan</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

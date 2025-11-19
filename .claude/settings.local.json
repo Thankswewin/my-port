@@ -5,7 +5,17 @@
       "Bash(git commit:*)",
       "Bash(gh:*)",
       "Bash(where:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(dir:*)",
+      "Bash(git push)",
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(start:*)",
+      "WebFetch(domain:thankswewin.github.io)",
+      "Bash(echo:*)",
+      "Bash(git pull:*)",
+      "WebFetch(domain:quickreplies.live)",
+      "WebFetch(domain:dnschecker.org)"
     ],
     "deny": [],
     "ask": []

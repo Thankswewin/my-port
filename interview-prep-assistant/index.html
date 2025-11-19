@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep Assistant - Practice Interview Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="text-6xl">💼</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-2 text-blue-400">Interview Prep Assistant</h1>
+            <p class="text-gray-300">Generate practice questions tailored to your target role</p>
+        </header>
+
+        <main class="bg-gray-800 bg-opacity-90 rounded-lg p-6 backdrop-blur-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="interviewRole" class="block text-sm font-medium mb-2">Job Title</label>
+                    <input
+                        type="text"
+                        id="interviewRole"
+                        class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                        placeholder="E.g. Frontend Engineer"
+                    >
+                </div>
+
+                <div>
+                    <label for="interviewFocus" class="block text-sm font-medium mb-2">Focus Area</label>
+                    <select id="interviewFocus" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                        <option value="technical">Technical</option>
+                        <option value="behavioral">Behavioral</option>
+                        <option value="system design">System Design</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="interviewGenerateBtn" class="w-full bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-200 mb-6">
+                Generate 5 Questions
+            </button>
+
+            <div id="resultSection" class="hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <label class="block text-sm font-medium">Practice Questions</label>
+                    <div class="flex gap-2">
+                        <button id="copyQuestionsBtn" class="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600 transition duration-200">
+                            Copy All
+                        </button>
+                        <button id="regenerateBtn" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition duration-200">
+                            Regenerate
+                        </button>
+                    </div>
+                </div>
+
+                <div id="interviewOutput" class="space-y-3">
+                    <!-- Questions will be inserted here -->
+                </div>
+
+                <div class="mt-6 bg-gray-700 bg-opacity-50 rounded-lg p-4">
+                    <h3 class="text-sm font-medium text-blue-300 mb-2">💡 Pro Tips:</h3>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li>• Use the STAR method (Situation, Task, Action, Result) for behavioral questions</li>
+                        <li>• For technical questions, think aloud and explain your reasoning</li>
+                        <li>• Practice with a timer to simulate real interview conditions</li>
+                        <li>• Research the company and connect your answers to their values</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-400">
+            <p>Level up your interview game with AI-powered practice 🚀</p>
+            <p class="mt-2 text-sm">Created by <a href="https://github.com/Thankswewin" class="text-blue-400 hover:text-blue-300">Philemon Ofotan</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,59 +1,62 @@
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <title>Philemon Ofotan — AI Developer Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio of Philemon Ofotan, Nigerian AI developer building intelligent tools, automations, and AI-powered products.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Geist:wght@300;400;500;600;700&amp;family=Geist+Mono:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            geist: ['Geist', 'system-ui', 'sans-serif'],
-            geistMono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+<html lang="en"><head><meta charset="UTF-8">
+<title>Philemon Ofotan — AI Developer Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Philemon Ofotan, Nigerian AI developer building intelligent tools, automations, and AI-powered products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Geist:wght@300;400;500;600;700&amp;family=Geist+Mono:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+.letter-animated{display:inline-block;opacity:0;transform:translateY(1.5rem);}
+.letter-animated.animate{animation:letterReveal 0.6s ease-out forwards;}
+@keyframes letterReveal{0%{opacity:0;transform:translateY(1.5rem);}100%{opacity:1;transform:translateY(0);}}
+.typing-line{opacity:0;white-space:nowrap;overflow:hidden;border-right:0.125rem solid #22c55e;}
+.typing-line.typing{animation:typing 3s steps(40,end) forwards,blink 1s infinite;}
+.typing-line.typed{opacity:1;border-right:none;}
+@keyframes typing{0%{opacity:1;width:0;}100%{opacity:1;width:100%;}}
+@keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+</style>
+<script>
+try {
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          geist: ['Geist', 'system-ui', 'sans-serif'],
+          geistMono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        },
+        animation: {
+          'fade-in': 'fadeIn 0.8s ease-out forwards',
+          'slide-up': 'slideUp 0.8s ease-out forwards',
+          'blur-in': 'blurIn 0.8s ease-out forwards',
+          'scale-in': 'scaleIn 0.8s ease-out forwards',
+          'float': 'float 6s ease-in-out infinite',
+          'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          'marquee': 'marquee 25s linear infinite',
+        },
+        keyframes: {
+          fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+          slideUp: { '0%': { opacity: '0', transform: 'translateY(1.5rem)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+          blurIn: { '0%': { opacity: '0', filter: 'blur(0.5rem)' }, '100%': { opacity: '1', filter: 'blur(0)' } },
+          scaleIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+          float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-0.5rem)' } },
+          pulseGlow: {
+            '0%,100%': { boxShadow: '0 0 1.25rem rgba(34,197,94,0.3)' },
+            '50%': { boxShadow: '0 0 2.5rem rgba(34,197,94,0.6),0 0 5rem rgba(34,197,94,0.2)' }
           },
-          animation: {
-            'fade-in': 'fadeIn 0.8s ease-out forwards',
-            'slide-up': 'slideUp 0.8s ease-out forwards',
-            'blur-in': 'blurIn 0.8s ease-out forwards',
-            'scale-in': 'scaleIn 0.8s ease-out forwards',
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-            'marquee': 'marquee 25s linear infinite',
+          marquee: {
+            '0%': { transform: 'translateX(0%)' },
+            '100%': { transform: 'translateX(-100%)' }
           },
-          keyframes: {
-            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            slideUp: { '0%': { opacity: '0', transform: 'translateY(1.5rem)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-            blurIn: { '0%': { opacity: '0', filter: 'blur(0.5rem)' }, '100%': { opacity: '1', filter: 'blur(0)' } },
-            scaleIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
-            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-0.5rem)' } },
-            pulseGlow: {
-              '0%,100%': { boxShadow: '0 0 1.25rem rgba(34,197,94,0.3)' },
-              '50%': { boxShadow: '0 0 2.5rem rgba(34,197,94,0.6),0 0 5rem rgba(34,197,94,0.2)' }
-            },
-            marquee: {
-              '0%': { transform: 'translateX(0%)' },
-              '100%': { transform: 'translateX(-100%)' }
-            },
-          }
         }
       }
     }
-  </script>
-  <style>
-    .letter-animated{display:inline-block;opacity:0;transform:translateY(1.5rem);}
-    .letter-animated.animate{animation:letterReveal 0.6s ease-out forwards;}
-    @keyframes letterReveal{0%{opacity:0;transform:translateY(1.5rem);}100%{opacity:1;transform:translateY(0);}}
-    .typing-line{opacity:0;white-space:nowrap;overflow:hidden;border-right:0.125rem solid #22c55e;}
-    .typing-line.typing{animation:typing 3s steps(40,end) forwards,blink 1s infinite;}
-    .typing-line.typed{opacity:1;border-right:none;}
-    @keyframes typing{0%{opacity:1;width:0;}100%{opacity:1;width:100%;}}
-    @keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
-  </style>
-</head>
+  };
+  console.log('Tailwind config loaded successfully');
+} catch (e) {
+  console.error('Tailwind config error:', e);
+}
+</script></head>
 <body class="h-full bg-black text-white antialiased overflow-x-hidden font-geist">
   <!-- Background glows -->
   <div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden">
@@ -79,8 +82,8 @@
       <div class="flex h-16 sm:h-20 items-center justify-between">
         <!-- Logo -->
         <a href="#top" class="flex items-center gap-2">
-          <div class="rounded-xl border border-white/25 bg-white/10 px-3 py-2">
-            <span class="text-base sm:text-lg font-semibold tracking-tight">PO</span>
+          <div class="rounded-xl border border-white/25 bg-white/10 p-1">
+            <img src="https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/2320914b-5b4d-4e92-aeea-0a237bac96e4/838657680d21d437d86249b1455749fd.jpg?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1763493183&Signature=IzdsFEC5/5sZLMSIl7VhFvsqSKs=" alt="Philemon Ofotan" class="h-8 w-8 sm:h-9 sm:w-9 rounded-lg object-cover" />
           </div>
           <div class="hidden sm:flex flex-col">
             <span class="text-xs font-medium text-gray-300 tracking-tight">Philemon Ofotan</span>
@@ -89,7 +92,7 @@
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-7-xs">
+        <nav class="hidden md:flex items-center gap-8">
           <a href="#projects" class="font-medium text-gray-300 hover:text-white transition-colors">Projects</a>
           <a href="#about" class="font-medium text-gray-300 hover:text-white transition-colors">About</a>
           <a href="#tools" class="font-medium text-gray-300 hover:text-white transition-colors">AI Tools</a>
@@ -133,9 +136,7 @@
           <div class="mb-8 flex justify-center">
             <div class="relative">
               <div class="absolute inset-0 rounded-full bg-emerald-400/20 blur-xl animate-float"></div>
-              <div class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full border border-white/20 bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center text-2xl font-semibold tracking-tight shadow-xl">
-                PO
-              </div>
+              <img src="https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/2320914b-5b4d-4e92-aeea-0a237bac96e4/838657680d21d437d86249b1455749fd.jpg?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1763493183&Signature=IzdsFEC5/5sZLMSIl7VhFvsqSKs=" alt="Philemon Ofotan" class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full border border-white/20 object-cover shadow-xl" />
             </div>
           </div>
 
@@ -160,7 +161,7 @@
                 <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
               </svg>
             </a>
-            <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all hover:scale-105">
+            <a href="philemon-ofotan-cv.html" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all hover:scale-105">
               Download CV (PDF)
             </a>
           </div>
@@ -308,6 +309,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs text-gray-300 mb-1 font-medium">Business type</label>
+                  <!-- FIX: id must be smeType (used in JS) -->
                   <select id="smeType" class="w-full text-xs bg-black/60 border border-white/20 rounded-full px-3 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-400">
                     <option value="fashion brand">Fashion brand</option>
                     <option value="food delivery">Food delivery</option>
@@ -343,7 +345,7 @@
             </div>
           </article>
 
-          <!-- Project 3: Interview Prep Assistant (New Live Demo) -->
+          <!-- Project 3: Interview Prep Assistant (Live Demo) -->
           <article class="relative rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-7 backdrop-blur-xl hover:bg-white/10 transition-all">
             <div class="flex items-center justify-between gap-4 mb-4">
               <div>
@@ -399,7 +401,7 @@
             </div>
           </article>
 
-          <!-- Project 4: Meeting Notes Summarizer (New Live Demo) -->
+          <!-- Project 4: Meeting Notes Summarizer (Live Demo) -->
           <article class="relative rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-7 backdrop-blur-xl hover:bg-white/10 transition-all">
             <div class="flex items-center justify-between gap-4 mb-4">
               <div>
@@ -483,7 +485,7 @@
                 <h3 class="text-xl font-semibold tracking-tight">AI-powered Task Automation</h3>
                 <p class="mt-1 text-sm text-gray-400">Automated routine client reporting and summaries using AI.</p>
               </div>
-              <span class="inline-flex items-center rounded-full bg-white/5 border border-white/20 text-gray-200 px-3 py-1 text-[0.7rem] font-medium">
+            <span class="inline-flex items-center rounded-full bg-white/5 border border-white/20 text-gray-200 px-3 py-1 text-[0.7rem] font-medium">
                 Automation
               </span>
             </div>
@@ -623,7 +625,6 @@
               Takes a raw customer message and drafts empathetic, structured replies that agents can edit and send.
             </p>
           </div>
-          <!-- Completed existing two + more tools -->
           <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
             <div class="flex items-center justify-between mb-2">
               <p class="text-gray-400 mb-1">Tool</p>
@@ -797,211 +798,6 @@
     </svg>
   </button>
 
-  <script>
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    if (menuBtn && mobileNav) {
-      menuBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-      });
-    }
-
-    // Year
-    document.getElementById('yearSpan').textContent = new Date().getFullYear();
-
-    // Back to top visibility
-    const goToTop = document.getElementById('goToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        goToTop.classList.remove('opacity-0');
-        goToTop.classList.add('opacity-100');
-      } else {
-        goToTop.classList.add('opacity-0');
-        goToTop.classList.remove('opacity-100');
-      }
-    });
-    goToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    // Hero headline letter animation
-    function animateHeadlineLetters() {
-      const headline = document.getElementById('heroHeadline');
-      if (!headline) return;
-      const text = headline.textContent;
-      headline.textContent = '';
-      [...text].forEach((char, index) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        span.classList.add('letter-animated');
-        headline.appendChild(span);
-        setTimeout(() => span.classList.add('animate'), 200 + index * 25);
-      });
-    }
-    animateHeadlineLetters();
-
-    // AI Email Assistant logic (simulated on-page)
-    const emailBtn = document.getElementById('emailGenerateBtn');
-    const emailInput = document.getElementById('emailInput');
-    const emailTone = document.getElementById('emailTone');
-    const emailOutput = document.getElementById('emailOutput');
-
-    if (emailBtn) {
-      emailBtn.addEventListener('click', () => {
-        const notes = (emailInput.value || '').trim();
-        const tone = emailTone.value;
-        if (!notes) {
-          emailOutput.textContent = 'Please add a few notes so I can generate an email.';
-          return;
-        }
-        let greeting = 'Dear Hiring Manager,';
-        let closing = 'Kind regards,\nPhilemon Ofotan';
-
-        if (tone === 'friendly') {
-          greeting = 'Hello,';
-          closing = 'Best regards,\nPhilemon';
-        } else if (tone === 'direct') {
-          greeting = 'Hi,';
-          closing = 'Sincerely,\nPhilemon Ofotan';
-        }
-
-        const body = [
-          `${greeting}`,
-          '',
-          `Thank you for taking the time to speak with me. ${notes[0].toUpperCase() + notes.slice(1)}`,
-          '',
-          `If you need any additional information from me, I will be happy to provide it.`,
-          '',
-          closing
-        ].join('\n');
-
-        emailOutput.textContent = body;
-      });
-    }
-
-    // SME Copy Assistant logic
-    const smeBtn = document.getElementById('smeGenerateBtn');
-    const smeType = document.getElementById('smeType');
-    const smePlatform = document.getElementById('smePlatform');
-    const smeOffer = document.getElementById('smeOffer');
-    const smeOutput = document.getElementById('smeOutput');
-
-    if (smeBtn) {
-      smeBtn.addEventListener('click', () => {
-        const type = smeType.value;
-        const platform = smePlatform.value;
-        const offer = (smeOffer.value || 'a special offer').trim();
-
-        const captions = [
-          `1️⃣ ${offer} just dropped!\n${type} serving you better every day. Send a DM to grab yours now. #${platform.replace(/\s|\/|-/g,'')} #NaijaBusiness`,
-          `2️⃣ Lagos, are you ready? ${offer} for our amazing customers.\nTap the link in bio or send “${type.split(' ')[0]}” to chat and order.`,
-          `3️⃣ Don’t sleep on this! ${offer} available for a limited time only.\nTell a friend, save this post, and let’s grow together. #SupportSmallBusiness`
-        ];
-
-        smeOutput.innerHTML = captions.map(c => `<p>${c.replace(/\n/g, '<br>')}</p>`).join('');
-      });
-    }
-
-    // Interview Prep Assistant logic
-    const interviewBtn = document.getElementById('interviewGenerateBtn');
-    const interviewRole = document.getElementById('interviewRole');
-    const interviewFocus = document.getElementById('interviewFocus');
-    const interviewOutput = document.getElementById('interviewOutput');
-
-    if (interviewBtn) {
-      interviewBtn.addEventListener('click', () => {
-        const role = (interviewRole.value || 'this role').trim();
-        const focus = interviewFocus.value;
-
-        const baseQuestions = {
-          technical: [
-            `Can you walk me through a recent project where you used skills relevant to ${role}?`,
-            `How do you approach debugging a complex issue related to ${role}?`,
-            `What tools or technologies do you rely on most as a ${role}?`,
-            `Describe a time you improved performance or reliability in a ${role} context.`,
-            `How do you stay up to date with best practices for ${role}?`
-          ],
-          behavioral: [
-            `Tell me about a time you faced a major challenge as a ${role What did you do?`,
-            `Describe a situation where you had a conflict with a teammate and how you handled it.`,
-            `Share an example of when you had to deliver under a tight deadline.`,
-            `Tell me about a time you made a mistake in ${role}. What did you learn?`,
-            `Describe a moment you showed leadership, even without a formal title.`
-          ],
-          'system design': [
-            `How would you design a scalable system for ${role}-related workflows used by millions of users?`,
-            `What trade‑offs would you consider when choosing databases for a ${role}-centric platform?`,
-            `How would you add observability and monitoring to critical features a ${role} owns?`,
-            `Describe how you would break a monolith into services for a product your ${role} works on.`,
-            `How do you ensure security and reliability in systems managed by a ${role}?`
-          ]
-        };
-
-        const questions = baseQuestions[focus] || baseQuestions.technical;
-
-        interviewOutput.innerHTML = questions
-          .map((q, i) => `<p>${i + 1}. ${q}</p>`)
-          .join('');
-      });
-    }
-
-    // Meeting Notes Summarizer logic
-    const meetingBtn = document.getElementById('meetingGenerateBtn');
-    const meetingInput = document.getElementById('meetingInput');
-    const meetingDecisions = document.getElementById('meetingDecisions');
-    const meetingActions = document.getElementById('meetingActions');
-    const meetingHighlights = document.getElementById('meetingHighlights');
-
-    if (meetingBtn) {
-      meetingBtn.addEventListener('click', () => {
-        const raw = (meetingInput.value || '').trim();
-
-        if (!raw) {
-          meetingDecisions.textContent = 'Add some notes to see a summary.';
-          meetingActions.textContent = '';
-          meetingHighlights.textContent = '';
-          return;
-        }
-
-        const sentences = raw
-          .split(/[\.\n]/)
-          .map(s => s.trim())
-          .filter(Boolean);
-
-        const guessDecisions = sentences.filter(s =>
-          /decided|will|agreed|concluded|confirm|finalize/i.test(s)
-        ).slice(0, 3);
-
-        const guessActions = sentences.filter(s =>
-          /assign|follow up|follow-up|send|prepare|update|review|next step/i.test(s)
-        ).slice(0, 4);
-
-        const remaining = sentences.filter(s =>
-          !guessDecisions.includes(s) && !guessActions.includes(s)
-        ).slice(0, 4);
-
-        const fallback = str => (str.length ? str : ['No clear items detected. Try adding more detail.']);
-
-        const renderList = (container, items) => {
-          container.innerHTML = fallback(items).map(i => `<p>• ${i}</p>`).join('');
-        };
-
-        renderList(meetingDecisions, guessDecisions);
-        renderList(meetingActions, guessActions);
-        renderList(meetingHighlights, remaining);
-      });
-    }
-  </script>
-
+  <script src="clean-script.js"></script>
+  <script src="clean-script.js"></script>
 </body></html>

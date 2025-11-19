@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Minimal Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #000; color: white; font-family: Arial; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8">Portfolio Demo Test</h1>
+
+        <!-- Email Assistant Test -->
+        <div class="mb-8 p-6 border border-white/10 rounded">
+            <h2 class="text-xl font-semibold mb-4">Email Assistant Test</h2>
+            <select id="emailTone" class="bg-black/60 border border-white/20 rounded px-3 py-1 mb-2">
+                <option value="professional">Professional</option>
+                <option value="friendly">Friendly</option>
+                <option value="direct">Direct</option>
+            </select>
+            <textarea id="emailInput" rows="3" class="w-full bg-black/60 border border-white/20 rounded p-2 mb-2" placeholder="Your notes here..."></textarea>
+            <button id="emailGenerateBtn" class="bg-emerald-400 text-black px-4 py-2 rounded">Generate Email</button>
+            <div id="emailOutput" class="mt-2 p-3 bg-black/40 border border-white/10 rounded min-h-[50px]"></div>
+        </div>
+
+        <!-- Meeting Notes Test -->
+        <div class="mb-8 p-6 border border-white/10 rounded">
+            <h2 class="text-xl font-semibold mb-4">Meeting Notes Test</h2>
+            <textarea id="meetingInput" rows="4" class="w-full bg-black/60 border border-white/20 rounded p-2 mb-2" placeholder="Meeting notes here..."></textarea>
+            <button id="meetingGenerateBtn" class="bg-emerald-400 text-black px-4 py-2 rounded">Summarize Notes</button>
+            <div class="grid grid-cols-3 gap-3 mt-2">
+                <div class="bg-black/40 border border-white/10 rounded p-3">
+                    <p class="text-xs font-medium mb-1">Decisions</p>
+                    <div id="meetingDecisions" class="text-xs"></div>
+                </div>
+                <div class="bg-black/40 border border-white/10 rounded p-3">
+                    <p class="text-xs font-medium mb-1">Actions</p>
+                    <div id="meetingActions" class="text-xs"></div>
+                </div>
+                <div class="bg-black/40 border border-white/10 rounded p-3">
+                    <p class="text-xs font-medium mb-1">Highlights</p>
+                    <div id="meetingHighlights" class="text-xs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('=== PORTFOLIO MINIMAL TEST STARTED ===');
+
+        // Email Assistant
+        const emailBtn = document.getElementById('emailGenerateBtn');
+        const emailInput = document.getElementById('emailInput');
+        const emailTone = document.getElementById('emailTone');
+        const emailOutput = document.getElementById('emailOutput');
+
+        console.log('Email elements found:', {
+            btn: !!emailBtn,
+            input: !!emailInput,
+            tone: !!emailTone,
+            output: !!emailOutput
+        });
+
+        if (emailBtn && emailInput && emailTone && emailOutput) {
+            emailBtn.addEventListener('click', () => {
+                console.log('EMAIL BUTTON CLICKED!');
+                const notes = (emailInput.value || '').trim();
+                const tone = emailTone.value;
+
+                if (!notes) {
+                    emailOutput.textContent = 'Please add some notes first.';
+                    return;
+                }
+
+                let greeting = 'Dear Hiring Manager,';
+                let closing = 'Kind regards,\nPhilemon Ofotan';
+
+                if (tone === 'friendly') {
+                    greeting = 'Hello,';
+                    closing = 'Best regards,\nPhilemon';
+                } else if (tone === 'direct') {
+                    greeting = 'Hi,';
+                    closing = 'Sincerely,\nPhilemon Ofotan';
+                }
+
+                const body = [
+                    `${greeting}`,
+                    '',
+                    `Thank you for the opportunity. ${notes[0].toUpperCase() + notes.slice(1)}`,
+                    '',
+                    'I look forward to hearing from you.',
+                    '',
+                    closing
+                ].join('\n');
+
+                emailOutput.textContent = body;
+                console.log('Email generated successfully');
+            });
+        }
+
+        // Meeting Notes
+        const meetingBtn = document.getElementById('meetingGenerateBtn');
+        const meetingInput = document.getElementById('meetingInput');
+        const meetingDecisions = document.getElementById('meetingDecisions');
+        const meetingActions = document.getElementById('meetingActions');
+        const meetingHighlights = document.getElementById('meetingHighlights');
+
+        console.log('Meeting elements found:', {
+            btn: !!meetingBtn,
+            input: !!meetingInput,
+            decisions: !!meetingDecisions,
+            actions: !!meetingActions,
+            highlights: !!meetingHighlights
+        });
+
+        if (meetingBtn && meetingInput && meetingDecisions && meetingActions && meetingHighlights) {
+            meetingBtn.addEventListener('click', () => {
+                console.log('MEETING BUTTON CLICKED!');
+                const raw = (meetingInput.value || '').trim();
+
+                if (!raw) {
+                    meetingDecisions.textContent = 'Add notes to see summary.';
+                    meetingActions.textContent = '';
+                    meetingHighlights.textContent = '';
+                    return;
+                }
+
+                // Simple processing
+                const lines = raw.split('\n').filter(line => line.trim());
+
+                const decisions = lines.filter(line =>
+                    /decision|agreed|approved|decided/i.test(line)
+                ).slice(0, 3);
+
+                const actions = lines.filter(line =>
+                    /action|assign|follow|send|prepare|update/i.test(line)
+                ).slice(0, 3);
+
+                const highlights = lines.filter(line =>
+                    !decisions.includes(line) && !actions.includes(line)
+                ).slice(0, 3);
+
+                const renderList = (container, items) => {
+                    container.innerHTML = items.length > 0
+                        ? items.map(i => `<p>• ${i}</p>`).join('')
+                        : '<p>• No items found</p>';
+                };
+
+                renderList(meetingDecisions, decisions.length > 0 ? decisions : ['No clear decisions detected']);
+                renderList(meetingActions, actions.length > 0 ? actions : ['No clear actions detected']);
+                renderList(meetingHighlights, highlights.length > 0 ? highlights : ['No highlights found']);
+
+                console.log('Meeting notes processed successfully');
+            });
+        }
+
+        console.log('=== PORTFOLIO MINIMAL TEST COMPLETED ===');
+    </script>
+</body>
+</html>

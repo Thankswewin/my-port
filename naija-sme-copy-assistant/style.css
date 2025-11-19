@@ -1,0 +1,103 @@
+/* Naija SME Copy Assistant Styles */
+body {
+    background: linear-gradient(135deg, #065f46 0%, #000000 100%);
+}
+
+.container {
+    backdrop-filter: blur(10px);
+}
+
+.bg-gray-800 {
+    background-color: rgba(31, 41, 55, 0.9);
+}
+
+.bg-gray-700 {
+    background-color: rgba(55, 65, 81, 0.8);
+}
+
+.border-gray-600 {
+    border-color: rgba(75, 85, 99, 0.6);
+}
+
+.text-emerald-400 {
+    color: #34d399;
+}
+
+.bg-emerald-500 {
+    background-color: #10b981;
+}
+
+.hover\:bg-emerald-600:hover {
+    background-color: #059669;
+}
+
+.focus\:ring-emerald-400:focus {
+    --tw-ring-color: #34d399;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(55, 65, 81, 0.8);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.8);
+}
+
+/* Animation for loading state */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Caption styling */
+.caption-card {
+    transition: all 0.3s ease;
+}
+
+.caption-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effects */
+.btn-hover {
+    transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+    transform: translateY(-1px);
+}
+
+/* Notification styling */
+.notification {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

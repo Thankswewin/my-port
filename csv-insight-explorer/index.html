@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Insight Explorer - Data Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-teal-900 to-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="text-6xl">📊</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-2 text-teal-400">CSV Insight Explorer</h1>
+            <p class="text-gray-300">Upload CSV files and explore insights with natural language queries</p>
+        </header>
+
+        <main class="bg-gray-800 bg-opacity-90 rounded-lg p-6 backdrop-blur-sm">
+            <!-- File Upload Section -->
+            <div class="mb-6">
+                <label for="csvFile" class="block text-sm font-medium mb-2">Upload CSV File</label>
+                <div class="file-upload-area" id="fileUploadArea">
+                    <input type="file" id="csvFile" accept=".csv" class="hidden">
+                    <div class="file-drop-zone" id="fileDropZone">
+                        <div class="text-center">
+                            <span class="text-4xl mb-2 block">📁</span>
+                            <p class="text-gray-300 mb-2">Drag & drop your CSV file here</p>
+                            <p class="text-gray-400 text-sm mb-4">or</p>
+                            <button id="browseBtn" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition duration-200">
+                                Browse Files
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="fileInfo" class="hidden mt-4 p-4 bg-gray-700 bg-opacity-50 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">📄</span>
+                            <div>
+                                <p class="font-medium text-teal-300" id="fileName"></p>
+                                <p class="text-sm text-gray-400" id="fileSize"></p>
+                            </div>
+                        </div>
+                        <button id="clearFileBtn" class="text-red-400 hover:text-red-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Preview Section -->
+            <div id="dataPreview" class="hidden mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-teal-300">Data Preview</h3>
+                    <div class="flex gap-2">
+                        <span id="rowCount" class="text-sm text-gray-400"></span>
+                        <span id="colCount" class="text-sm text-gray-400"></span>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="dataTable" class="w-full text-sm">
+                        <thead id="tableHead"></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Query Section -->
+            <div id="querySection" class="hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <label for="queryInput" class="block text-sm font-medium mb-2">Ask About Your Data</label>
+                        <textarea
+                            id="queryInput"
+                            rows="4"
+                            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-400 focus:border-transparent resize-none"
+                            placeholder="E.g., What's the average value of the price column? Show me the top 5 products by sales. How many rows have missing data?"
+                        ></textarea>
+                        <div class="mt-2 flex gap-2">
+                            <button id="askBtn" class="flex-1 bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition duration-200">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span>🔍</span>
+                                    Analyze Data
+                                </span>
+                            </button>
+                            <button id="clearQueryBtn" class="bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">
+                                Clear
+                            </button>
+                        </div>
+
+                        <!-- Quick Query Templates -->
+                        <div class="mt-4">
+                            <p class="text-sm font-medium text-gray-300 mb-2">Quick Queries:</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="quick-query text-xs bg-gray-700 bg-opacity-50 text-gray-300 px-2 py-1 rounded hover:bg-opacity-70" data-query="Show me the summary statistics">
+                                    📈 Summary Stats
+                                </button>
+                                <button class="quick-query text-xs bg-gray-700 bg-opacity-50 text-gray-300 px-2 py-1 rounded hover:bg-opacity-70" data-query="What are the column names and types?">
+                                    📋 Column Info
+                                </button>
+                                <button class="quick-query text-xs bg-gray-700 bg-opacity-50 text-gray-300 px-2 py-1 rounded hover:bg-opacity-70" data-query="Find any missing or null values">
+                                    ❓ Missing Values
+                                </button>
+                                <button class="quick-query text-xs bg-gray-700 bg-opacity-50 text-gray-300 px-2 py-1 rounded hover:bg-opacity-70" data-query="Show me unique values in each column">
+                                    🔢 Unique Values
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-300 mb-2">Available Columns</h3>
+                        <div id="columnsList" class="space-y-2 max-h-64 overflow-y-auto">
+                            <!-- Columns will be listed here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Query Results -->
+                <div id="queryResults" class="hidden mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-teal-300">Analysis Results</h3>
+                        <div class="flex gap-2">
+                            <button id="copyResultsBtn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition duration-200">
+                                Copy Results
+                            </button>
+                            <button id="exportResultsBtn" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition duration-200">
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <div id="resultsContent" class="space-y-4">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Data Section (for demo) -->
+            <div id="sampleDataSection">
+                <div class="text-center py-8">
+                    <p class="text-gray-400 mb-4">No data loaded. Upload a CSV file to start exploring insights.</p>
+                    <button id="loadSampleBtn" class="bg-teal-500 bg-opacity-20 text-teal-300 px-4 py-2 rounded-lg hover:bg-opacity-30 transition duration-200 border border-teal-500 border-opacity-30">
+                        Load Sample Data
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-400">
+            <p>Transform your CSV data into actionable insights 💡</p>
+            <p class="mt-2 text-sm">Created by <a href="https://github.com/Thankswewin" class="text-teal-400 hover:text-teal-300">Philemon Ofotan</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Demo Apps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Test Demo Apps</h1>
+
+        <!-- Email Assistant Test -->
+        <div class="mb-8 p-4 border border-white/10 rounded">
+            <h2 class="text-lg font-semibold mb-3">Email Assistant Test</h2>
+            <textarea id="testEmailInput" class="w-full p-2 bg-black/60 border border-white/20 rounded mb-2" placeholder="Test notes"></textarea>
+            <button id="testEmailBtn" class="bg-emerald-400 text-black px-4 py-2 rounded">Test Email</button>
+            <div id="testEmailOutput" class="mt-2 p-2 bg-black/40 border border-white/10 rounded min-h-[50px]"></div>
+        </div>
+
+        <!-- Meeting Notes Test -->
+        <div class="mb-8 p-4 border border-white/10 rounded">
+            <h2 class="text-lg font-semibold mb-3">Meeting Notes Test</h2>
+            <textarea id="testMeetingInput" class="w-full p-2 bg-black/60 border border-white/20 rounded mb-2" placeholder="Test meeting notes"></textarea>
+            <button id="testMeetingBtn" class="bg-emerald-400 text-black px-4 py-2 rounded">Test Meeting</button>
+            <div id="testMeetingOutput" class="mt-2 p-2 bg-black/40 border border-white/10 rounded min-h-[50px]"></div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script loaded');
+
+        // Test Email Assistant
+        const testEmailBtn = document.getElementById('testEmailBtn');
+        const testEmailInput = document.getElementById('testEmailInput');
+        const testEmailOutput = document.getElementById('testEmailOutput');
+
+        if (testEmailBtn && testEmailInput && testEmailOutput) {
+            console.log('Email elements found');
+            testEmailBtn.addEventListener('click', () => {
+                console.log('Email button clicked');
+                const notes = testEmailInput.value.trim();
+                if (notes) {
+                    testEmailOutput.innerHTML = `<p>Dear Hiring Manager,</p><p>${notes}</p><p>Best regards,<br>Philemon</p>`;
+                } else {
+                    testEmailOutput.textContent = 'Please add notes';
+                }
+            });
+        } else {
+            console.error('Email elements not found');
+        }
+
+        // Test Meeting Notes
+        const testMeetingBtn = document.getElementById('testMeetingBtn');
+        const testMeetingInput = document.getElementById('testMeetingInput');
+        const testMeetingOutput = document.getElementById('testMeetingOutput');
+
+        if (testMeetingBtn && testMeetingInput && testMeetingOutput) {
+            console.log('Meeting elements found');
+            testMeetingBtn.addEventListener('click', () => {
+                console.log('Meeting button clicked');
+                const raw = testMeetingInput.value.trim();
+                if (raw) {
+                    testMeetingOutput.innerHTML = `<p><strong>Decisions:</strong> Found decisions</p><p><strong>Actions:</strong> Found actions</p><p><strong>Highlights:</strong> Found highlights</p>`;
+                } else {
+                    testMeetingOutput.textContent = 'Please add meeting notes';
+                }
+            });
+        } else {
+            console.error('Meeting elements not found');
+        }
+
+        console.log('All event listeners attached');
+    </script>
+</body>
+</html>

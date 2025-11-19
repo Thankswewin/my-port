@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Repurposer - Transform Content for Multiple Platforms</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-orange-900 to-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="text-6xl">🔄</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-2 text-orange-400">Content Repurposer</h1>
+            <p class="text-gray-300">Transform your long-form content into multiple formats for different platforms</p>
+        </header>
+
+        <main class="bg-gray-800 bg-opacity-90 rounded-lg p-6 backdrop-blur-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="sourceContent" class="block text-sm font-medium mb-2">Original Content</label>
+                    <textarea
+                        id="sourceContent"
+                        rows="12"
+                        class="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
+                        placeholder="Paste your blog post, article, or long-form content here..."
+                    ></textarea>
+                    <div class="mt-2 flex justify-between text-xs text-gray-400">
+                        <span id="wordCount">0 words</span>
+                        <span id="readTime">0 min read</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2">Target Platforms</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="twitterCheck" class="mr-2 rounded text-orange-500" checked>
+                                <span class="text-sm">🐦 Twitter / X</span>
+                            </label>
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="linkedinCheck" class="mr-2 rounded text-orange-500" checked>
+                                <span class="text-sm">💼 LinkedIn</span>
+                            </label>
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="instagramCheck" class="mr-2 rounded text-orange-500">
+                                <span class="text-sm">📷 Instagram</span>
+                            </label>
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="facebookCheck" class="mr-2 rounded text-orange-500">
+                                <span class="text-sm">📘 Facebook</span>
+                            </label>
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="newsletterCheck" class="mr-2 rounded text-orange-500" checked>
+                                <span class="text-sm">📧 Newsletter</span>
+                            </label>
+                            <label class="platform-checkbox">
+                                <input type="checkbox" id="tiktokCheck" class="mr-2 rounded text-orange-500">
+                                <span class="text-sm">🎵 TikTok</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="contentType" class="block text-sm font-medium mb-2">Content Type</label>
+                        <select id="contentType" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                            <option value="blog">Blog Post</option>
+                            <option value="article">Article</option>
+                            <option value="research">Research Paper</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="announcement">Product Announcement</option>
+                            <option value="case-study">Case Study</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="tone" class="block text-sm font-medium mb-2">Tone</label>
+                        <select id="tone" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual</option>
+                            <option value="enthusiastic">Enthusiastic</option>
+                            <option value="informative">Informative</option>
+                            <option value="promotional">Promotional</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="hashtagOption" class="block text-sm font-medium mb-2">Hashtag Strategy</label>
+                        <select id="hashtagOption" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                            <option value="relevant">Relevant Hashtags</option>
+                            <option value="trending">Trending Hashtags</option>
+                            <option value="niche">Niche-Specific</option>
+                            <option value="minimal">Minimal Hashtags</option>
+                            <option value="none">No Hashtags</option>
+                        </select>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button id="repurposeBtn" class="flex-1 bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-orange-600 transition duration-200">
+                            <span class="flex items-center justify-center gap-2">
+                                <span>✨</span>
+                                Repurpose Content
+                            </span>
+                        </button>
+                        <button id="clearBtn" class="bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition duration-200">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultSection" class="hidden space-y-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-orange-300">Repurposed Content</h3>
+                    <div class="flex gap-2">
+                        <button id="copyAllBtn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition duration-200">
+                            Copy All
+                        </button>
+                        <button id="exportBtn" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition duration-200">
+                            Export All
+                        </button>
+                    </div>
+                </div>
+
+                <div id="platformContent" class="space-y-6">
+                    <!-- Platform-specific content will be inserted here -->
+                </div>
+
+                <!-- Content Statistics -->
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-4">
+                    <h4 class="text-sm font-medium text-orange-300 mb-3">📊 Content Statistics</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <div id="totalPosts" class="text-2xl font-bold text-orange-300">0</div>
+                            <div class="text-xs text-gray-400">Posts Created</div>
+                        </div>
+                        <div>
+                            <div id="totalWords" class="text-2xl font-bold text-blue-300">0</div>
+                            <div class="text-xs text-gray-400">Total Words</div>
+                        </div>
+                        <div>
+                            <div id="totalHashtags" class="text-2xl font-bold text-green-300">0</div>
+                            <div class="text-xs text-gray-400">Hashtags Used</div>
+                        </div>
+                        <div>
+                            <div id="savesTime" class="text-2xl font-bold text-purple-300">2h</div>
+                            <div class="text-xs text-gray-400">Time Saved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-400">
+            <p>Maximize your content reach across multiple platforms 🚀</p>
+            <p class="mt-2 text-sm">Created by <a href="https://github.com/Thankswewin" class="text-orange-400 hover:text-orange-300">Philemon Ofotan</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

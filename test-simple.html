@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body { background: #000; color: white; padding: 20px; font-family: Arial; }
+        button { background: #22c55e; color: black; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; margin: 10px; }
+        input, textarea { background: #111; color: white; border: 1px solid #333; padding: 10px; border-radius: 10px; width: 300px; }
+        .output { background: #111; padding: 10px; border-radius: 10px; margin-top: 10px; min-height: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Demo Test</h1>
+
+    <div>
+        <h3>Email Test</h3>
+        <input id="testEmailInput" placeholder="Enter notes">
+        <button id="testEmailBtn">Generate Email</button>
+        <div id="testEmailOutput" class="output"></div>
+    </div>
+
+    <div>
+        <h3>Meeting Notes Test</h3>
+        <textarea id="testMeetingInput" placeholder="Enter meeting notes"></textarea>
+        <button id="testMeetingBtn">Summarize</button>
+        <div id="testMeetingOutput" class="output"></div>
+    </div>
+
+    <script>
+        console.log('=== SIMPLE TEST STARTED ===');
+
+        // Test 1: Simple button click
+        const testEmailBtn = document.getElementById('testEmailBtn');
+        const testEmailInput = document.getElementById('testEmailInput');
+        const testEmailOutput = document.getElementById('testEmailOutput');
+
+        console.log('Email elements:', {
+            btn: !!testEmailBtn,
+            input: !!testEmailInput,
+            output: !!testEmailOutput
+        });
+
+        if (testEmailBtn) {
+            testEmailBtn.addEventListener('click', function() {
+                console.log('EMAIL BUTTON CLICKED!');
+                const value = testEmailInput ? testEmailInput.value : 'no input';
+                if (testEmailOutput) {
+                    testEmailOutput.textContent = 'Email generated: ' + value;
+                }
+                alert('Email button works! Value: ' + value);
+            });
+        }
+
+        // Test 2: Meeting notes
+        const testMeetingBtn = document.getElementById('testMeetingBtn');
+        const testMeetingInput = document.getElementById('testMeetingInput');
+        const testMeetingOutput = document.getElementById('testMeetingOutput');
+
+        console.log('Meeting elements:', {
+            btn: !!testMeetingBtn,
+            input: !!testMeetingInput,
+            output: !!testMeetingOutput
+        });
+
+        if (testMeetingBtn) {
+            testMeetingBtn.addEventListener('click', function() {
+                console.log('MEETING BUTTON CLICKED!');
+                const value = testMeetingInput ? testMeetingInput.value : 'no input';
+                if (testMeetingOutput) {
+                    testMeetingOutput.innerHTML = '<strong>Decisions:</strong><br>• Found decisions<br><strong>Actions:</strong><br>• Found actions<br><strong>Highlights:</strong><br>• Found highlights';
+                }
+                alert('Meeting button works!');
+            });
+        }
+
+        console.log('=== SIMPLE TEST COMPLETED ===');
+    </script>
+</body>
+</html>

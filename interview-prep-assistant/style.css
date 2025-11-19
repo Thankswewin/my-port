@@ -1,0 +1,147 @@
+/* Interview Prep Assistant Styles */
+body {
+    background: linear-gradient(135deg, #1e3a8a 0%, #000000 100%);
+}
+
+.container {
+    backdrop-filter: blur(10px);
+}
+
+.bg-gray-800 {
+    background-color: rgba(31, 41, 55, 0.9);
+}
+
+.bg-gray-700 {
+    background-color: rgba(55, 65, 81, 0.8);
+}
+
+.bg-gray-600 {
+    background-color: rgba(75, 85, 99, 0.7);
+}
+
+.border-gray-600 {
+    border-color: rgba(75, 85, 99, 0.6);
+}
+
+.text-blue-400 {
+    color: #60a5fa;
+}
+
+.bg-blue-500 {
+    background-color: #3b82f6;
+}
+
+.hover\:bg-blue-600:hover {
+    background-color: #2563eb;
+}
+
+.focus\:ring-blue-400:focus {
+    --tw-ring-color: #60a5fa;
+}
+
+/* Question card styling */
+.question-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.question-card:hover {
+    transform: translateX(4px);
+    border-left-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(55, 65, 81, 0.8);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.8);
+}
+
+/* Button styling */
+.btn-hover {
+    transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+    transform: translateY(-1px);
+}
+
+.btn-hover:active {
+    transform: translateY(0);
+}
+
+/* Loading state animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Notification styling */
+.notification {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Pro tips section */
+.pro-tips {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(55, 65, 81, 0.3));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Focus states */
+.focus-ring {
+    transition: all 0.2s ease;
+}
+
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Copy button styling */
+.copy-single {
+    transition: all 0.2s ease;
+}
+
+.copy-single:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
